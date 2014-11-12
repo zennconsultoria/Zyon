@@ -1,5 +1,5 @@
 <?php
- 
+
 return array(
     # definir e gerenciar controllers
     'controllers' => array(
