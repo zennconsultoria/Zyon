@@ -42,18 +42,20 @@ class Module
     public function getViewHelperConfig()
     {
         return array(
-
             # registrar View Helper com injecao de dependecia
             'factories' => array(
-                'menuAtivo'  => function($sm) {
+                'menuAtivo' => function($sm) {
                     return new View\Helper\MenuAtivo($sm->getServiceLocator()->get('Request'));
                 },
                 'message' => function($sm) {
                     return new View\Helper\Message($sm->getServiceLocator()->get('ControllerPluginManager')->get('flashmessenger'));
                 },
+            ),
+            'invokables' => array(
+                'filter' => 'Contato\View\Helper\ContatoFilter'
             )
         );
-    }
+    } 
       
     /**
     * Register Services
@@ -79,5 +81,5 @@ class Module
                 }
             )
         );
-   }
+    }  
 }

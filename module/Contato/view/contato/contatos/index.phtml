@@ -32,8 +32,8 @@
             <tr>
                 <th>#</th>
                 <th>Nome</th>
-                <th>Tel. Principal</th>
-                <th>Tel. Qua.</th>
+                <th>Telefone</th>
+                <th>e-mail</th>
                 <th>Data Criação</th>  
                 <th>Ação</th>  
             </tr>
@@ -41,11 +41,11 @@
         <tbody>
             <?php foreach ($this->contatos as $contato) : ?>
                 <tr>
-                    <td><?php echo $this->escapeHtml($contato->id); ?></td>
-                    <td><?php echo $this->escapeHtml($contato->nome); ?></td>
-                    <td><?php echo $this->escapeHtml($contato->telefone); ?></td>
-                    <td class="text-center">2</td>
-                    <td><?php echo $this->escapeHtml($contato->data_criacao); ?></td>
+                    <td><?php echo $this->filter($contato)->id(); ?></td>
+                    <td><?php echo $this->filter($contato)->nomeSobrenome(); ?></td>
+                    <td><?php echo $this->filter($contato)->telefone(); ?></td>
+                    <td><?php echo $this->filter($contato)->email(); ?></td>
+                    <td><?php echo $this->filter($contato)->dataCriacao(); ?></td>
                     <td>
                         <a class="btn btn-xs btn-info" title="Visualizar" href="<?php echo $this->url('contatos', array("action" => "detalhes", "id" => $contato->id,)); ?>"><span class="glyphicon glyphicon-new-window"></span></a>
                         <a class="btn btn-xs btn-warning" title="Editar" href="<?php echo $this->url('contatos', array("action" => "editar", "id" => $contato->id,)); ?>"><span class="glyphicon glyphicon-edit"></span></a>

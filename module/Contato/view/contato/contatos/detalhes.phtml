@@ -1,25 +1,25 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
         <div class="panel-title">
-            Detalhes Contato ID <?php echo $this->escapeHtml($this->id); ?>            
+            Detalhes Contato ID <?php echo $this->filter($contato)->id(); ?>
         </div>
     </div>
     <div class="panel-body">
         <dl class="dl-horizontal">
             <dt>Nome:</dt>
-            <dd><?php echo $this->escapeHtml($this->form["nome"]); ?></dd>
+            <dd><?php echo $this->filter($contato)->nomeCompleto(); ?></dd>
             <dt>Telefone:</dt>
-            <dd><?php echo $this->escapeHtml($this->form["telefone"]); ?></dd>
+            <dd><?php echo $this->filter($contato)->telefone(); ?></dd>
             <dt>e-mail:</dt>
-            <dd><?php echo $this->escapeHtml($this->form["email"]); ?></dd>
+            <dd><?php echo $this->filter($contato)->email(); ?></dd>
             <dt>Data Criação:</dt>
-            <dd><?php echo $this->escapeHtml($this->form["data_criacao"]); ?></dd>
+            <dd><?php echo $this->filter($contato)->dataCriacao(); ?></dd>
             <dt>Data Atualização:</dt>
-            <dd><?php echo $this->escapeHtml($this->form["data_atualizacao"]); ?></dd>
+            <dd><?php echo $this->filter($contato)->dataAtualizacao(); ?></dd>
         </dl>
     </div>
     <div class="panel-footer">
-        <a href="<?php echo $this->url('contatos', array('action' => 'editar', 'id' => $this->id)); ?>" class="btn btn-warning btn-sm">Editar Contato</a>
+        <a href="<?php echo $this->url('contatos', array('action' => 'editar', 'id' => $this->filter($contato)->id())); ?>" class="btn btn-warning btn-sm">Editar Contato</a>
         <a href="<?php echo $this->url('contatos'); ?>" class="btn btn-default btn-sm">Voltar</a>
     </div>
 </div>
