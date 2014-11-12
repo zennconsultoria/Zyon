@@ -8,5 +8,5 @@ $(function () {
     // verificar se o elemente esta presente na pagina
     if (corpo_alert.length)
         // gerar efeito para o elemento encontrado na pagina
-        corpo_alert.fadeOut().fadeIn().fadeOut().fadeIn().fadeOut().fadeIn();
+        corpo_alert.fadeOut().fadeIn();
 });
