@@ -22,8 +22,26 @@ class ContatosController extends AbstractActionController
     // GET /contatos
     public function indexAction()
     {
-        // enviar para view o array com key contatos e value com todos os contatos
-        return new ViewModel(array('contatos' => $this->getContatoTable()->fetchAll()));
+        // colocar parametros da url em um array
+        $paramsUrl = [
+            'pagina_atual'  => $this->params()->fromQuery('pagina', 1),
+            'itens_pagina'  => $this->params()->fromQuery('itens_pagina', 10),
+            'coluna_nome'   => $this->params()->fromQuery('coluna_nome', 'nome'),
+            'coluna_sort'   => $this->params()->fromQuery('coluna_sort', 'ASC'),
+            'search'        => $this->params()->fromQuery('search', null),
+        ];
+
+        // configuar método de paginação
+        $paginacao = $this->getContatoTable()->fetchPaginator(
+                /* $pagina */           $paramsUrl['pagina_atual'],
+                /* $itensPagina */      $paramsUrl['itens_pagina'],
+                /* $ordem */            "{$paramsUrl['coluna_nome']} {$paramsUrl['coluna_sort']}",
+                /* $search */           $paramsUrl['search'],
+                /* $itensPaginacao */   5
+        );
+
+        // retonar paginação mais os params de url para view
+        return new ViewModel(['contatos' => $paginacao] + $paramsUrl);
     }
 
     // GET /contatos/novo
